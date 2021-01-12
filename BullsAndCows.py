@@ -16,11 +16,14 @@ def guessedNumber():
 
 
 def splitChar(string):
+    """ Funkce ktera rozdeli string na list"""
     return [int(char) for char in string]
 
 
 def numberBulls(digitsList, myNumberList):
+    """ Funkce ktera nam vrati pocet bullu"""
     bulls = 0
+    # Smycka pres listy hadaneho cisla a vlozeneho cisla pomoci ktere spocítam pocet bull
     for indexDl, dl in enumerate(digitsList):
         for indexNl, nl in enumerate(myNumberList):
             if indexDl == indexNl and dl == nl:
@@ -29,46 +32,64 @@ def numberBulls(digitsList, myNumberList):
 
 
 def numberCows(digitsList, myNumberList):
-    cows = 0
+    """ Funkce ktera nam vrati pocet pomocných cows"""
+    helpCows = 0
     for n in myNumberList:
         if n in digitsList:
-            cows += 1
-    return cows
+            helpCows += 1
+    return helpCows
 
 
 def myNumber():
-    myNumber = input("Enter a number: ")
-    myNumberList = splitChar(myNumber)
+    """ Funkce pro vlozeni vlastniho cisla"""
+    myInputStr = input("Enter a number: ")
+    # Vytvoreni list ze stringu
+    myNumberList = splitChar(myInputStr)
+    # Vratime list
     return myNumberList
 
 
 def main():
+    """ Funkce pro spusteni celeho skriptu"""
+
     print('''
     Hi there!
-    I've generated a random 4 digit number for you.
+    I've generated a random 4 digit number for you. Digit must not be repeated.
     Let's play a bulls and cows game.
     ''')
+
     digitsList = guessedNumber()
+    # Radek pro kontrolu funkcnosti programu, aby jsem nemusel cislo hadat
+    print(digitsList)
     bulls = 0
     count = 0
+
+    # cas zacatku hadani
     start_time = datetime.now()
+
+    # Podminka ktera musi byt splnena pro dokonceni hry
     while bulls < 4:
         myNumberList = myNumber()
         if len(myNumberList) == 4:
             bulls = numberBulls(digitsList, myNumberList)
-            cows = numberCows(digitsList, myNumberList)
-            actualCows = cows - bulls
+            helpCows = numberCows(digitsList, myNumberList)
+            cows = helpCows - bulls
             count += 1
-            print(f"Actual bulls is: {bulls} and cows is: {actualCows}")
+            print(f"Actual bulls is: {bulls} and cows is: {cows}")
         else:
             print(f"The number is the wrong length, enter four digits.")
+
+    # cas konce hadani
     end_time = datetime.now()
     duration = end_time - start_time
+    # cas potrebny k uhodnuti cisla
     durationModif = str(duration)[:-5]
 
+    # Vypiseme vysledky
     print()
-    print(f"You win, you have {bulls} bulls.")
+    print(f"You won, you have {bulls} bulls.")
     print(f"Yours number of attempts was {count} and time was {durationModif}.")
+    print()
 
 
 main()
