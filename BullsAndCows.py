@@ -3,7 +3,15 @@ from datetime import datetime
 
 
 def guessedNumber():
-    digitsList = random.sample(range(10), 4)
+    """Funkce která vygeneruje náhodné čtyř místné číslo bez opakování číslic a nuly na začátku"""
+    # List s nulou na zacatku
+    digitsList = [0]
+    # Dokud bude nula na zacatku budu generovat novy list
+    while digitsList[0] == 0:
+        digitsList = random.sample(range(10), 4)
+    # Cislo prepsane na string
+    digitsListString = ''.join(map(str, digitsList))
+    # Vracime list pro dalsi pouziti ve fci
     return digitsList
 
 
