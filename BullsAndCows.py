@@ -59,8 +59,8 @@ def main():
     ''')
 
     digitsList = guessedNumber()
-    # Radek pro kontrolu funkcnosti programu, aby jsem nemusel cislo hadat
-    print(digitsList)
+    # Radek pro kontrolu funkcnosti programu, aby jsem nemusel cislo dlouho hadat
+    # print(digitsList)
     bulls = 0
     count = 0
 
