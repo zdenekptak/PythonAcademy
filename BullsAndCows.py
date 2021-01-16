@@ -55,6 +55,16 @@ def myNumber():
         else:
             myInputStr = input("There are bad characters in the number. Insert it again: ")
 
+def testSameDigits(seznam):
+    """ Kontrola aby nebyly stejne cisla"""
+    delkaSeznamu = len(seznam)
+    x = 0
+    while x < delkaSeznamu:
+        number = seznam.pop()
+        if number in seznam:
+            return False
+        x += 1
+    return True
 
 def main():
     """ Funkce pro spusteni celeho skriptu"""
