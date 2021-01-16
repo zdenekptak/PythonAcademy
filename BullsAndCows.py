@@ -57,9 +57,12 @@ def myNumber():
 
 def testSameDigits(seznam):
     """ Kontrola aby nebyly stejne cisla"""
+    # uložení delky seznamu do proměnné
     delkaSeznamu = len(seznam)
     x = 0
+    # Dokud platí podmínka
     while x < delkaSeznamu:
+        # Vezmu prvek se list smažu ho a zároveň porovnám se zbytkem listu
         number = seznam.pop()
         if number in seznam:
             return False
@@ -89,8 +92,11 @@ def main():
         myNumberList = myNumber()
         sameDigits = list(myNumberList)
         ed = testSameDigits(sameDigits)
+        # Podmínka pro kontrolu prvního čísla - nesmí být 0
         if myNumberList[0] != 0:
+            # Kontrola správné délky vstupního čísla
             if len(myNumberList) == 4:
+                # kontrola jestli číslo neobsahuje stejné číslice
                 if ed == True:
                     bulls = numberBulls(digitsList, myNumberList)
                     helpCows = numberCows(digitsList, myNumberList)
