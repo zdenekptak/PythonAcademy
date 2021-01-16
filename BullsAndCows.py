@@ -42,12 +42,16 @@ def numberCows(digitsList, myNumberList):
 
 def myNumber():
     """ Funkce pro vlozeni vlastniho cisla, která zkontroluje zda číslo neobshuje špatné znaky (písmena, znaménka ...)"""
+    # Uložíme vstup od uživatele
     myInputStr = input("Enter a number: ")
+    # Nastavme podmínku pro opakované zadaní čísla přo špatném znaku
     x = True
     while x:
+        # Pokud je vstup číselný vrátíme seznam
         if myInputStr.isdigit():
             myNumberList = splitChar(myInputStr)
             return myNumberList
+        # Pokud není vstup číselný vložíme znovu vstup
         else:
             myInputStr = input("There are bad characters in the number. Insert it again: ")
 
