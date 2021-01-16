@@ -53,7 +53,7 @@ def myNumber():
             return myNumberList
         # Pokud není vstup číselný vložíme znovu vstup
         else:
-            myInputStr = input("There are bad characters in the number. Insert it again: ")
+            myInputStr = input("There are bad characters in the number. Insert number again: ")
 
 def testSameDigits(seznam):
     """ Kontrola aby nebyly stejne cisla"""
@@ -80,7 +80,7 @@ def main():
 
     digitsList = guessedNumber()
     # Radek pro kontrolu funkcnosti programu, aby jsem nemusel cislo dlouho hadat
-    # print(digitsList)
+    print(digitsList)
     bulls = 0
     count = 0
 
