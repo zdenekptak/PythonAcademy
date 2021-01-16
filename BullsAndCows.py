@@ -77,7 +77,7 @@ def main():
 
     digitsList = guessedNumber()
     # Radek pro kontrolu funkcnosti programu, aby jsem nemusel cislo dlouho hadat
-    # print(digitsList)
+    print(digitsList)
     bulls = 0
     count = 0
 
@@ -87,15 +87,22 @@ def main():
     # Podminka ktera musi byt splnena pro dokonceni hry
     while bulls < 4:
         myNumberList = myNumber()
-        if len(myNumberList) == 4:
-            bulls = numberBulls(digitsList, myNumberList)
-            helpCows = numberCows(digitsList, myNumberList)
-            cows = helpCows - bulls
-            count += 1
-            print(f"Actual bulls is: {bulls} and cows is: {cows}")
+        sameDigits = list(myNumberList)
+        ed = testSameDigits(sameDigits)
+        if myNumberList[0] != 0:
+            if len(myNumberList) == 4:
+                if ed == True:
+                    bulls = numberBulls(digitsList, myNumberList)
+                    helpCows = numberCows(digitsList, myNumberList)
+                    cows = helpCows - bulls
+                    count += 1
+                    print(f"Actual bulls is: {bulls} and cows is: {cows}")
+                else:
+                    print(f"The number may not contain the same digits. Insert number again.")
+            else:
+                print(f"The number is the wrong length (max length is 4). Insert number again.")
         else:
-            print(f"The number is the wrong length, enter four digits.")
-
+            print(f"Number cannot start with zero. Insert number again.")
     # cas konce hadani
     end_time = datetime.now()
     duration = end_time - start_time
